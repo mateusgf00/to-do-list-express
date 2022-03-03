@@ -7,4 +7,9 @@ router.get('/', (req, res) =>{
     res.send();
 })
 
-modelo.exports = router;
+router.post('/', (req, res) =>{
+    console.log(req.body);
+    res.status(200).send(req.body);
+})
+
+module.exports = router;
