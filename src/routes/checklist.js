@@ -26,9 +26,9 @@ router.put('/:id',async(req, res) =>{
 router.get('/:id',async(req, res) =>{
     try{
         let checklists = await Checklist.findById(req.params.id);
-        res.status(200).json(checklists);
+        res.status(200).render('checklists/show', {checklists:checklists})
     }catch(error){
-        res.status(500).json(error);
+        res.status(200).render('pages/error', {error:'Erro ao exibir a listas'})
     }
 })
 
@@ -36,9 +36,9 @@ router.get('/', async(req, res) =>{
     
     try{
         let checklist = await Checklist.find({});
-        res.status(200).json(checklist);
+        res.status(200).render('checklists/index', {checklist:checklist})
     }catch(error){
-        res.status(500).json(error);
+        res.status(200).render('pages/error', {error:'Erro ao exibir a listas'})
     }
 })
 
